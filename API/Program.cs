@@ -1,3 +1,4 @@
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 // Add Swagger services
 builder.Services.AddSwaggerGen(c =>
@@ -39,5 +42,19 @@ app.UseSwaggerUI(c =>
 
 // Map controllers
 app.MapControllers();
+
+try
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<StoreContext>();
+    await context.Database.MigrateAsync();
+    await StoreContextSeed.SeedAsync(context);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex);
+    throw;
+}
 
 app.Run();

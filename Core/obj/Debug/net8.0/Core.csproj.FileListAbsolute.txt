@@ -9,3 +9,4 @@ C:\Users\PC\Documents\IT\E-Commerce App\skinet\Core\obj\Debug\net8.0\Core.dll
 C:\Users\PC\Documents\IT\E-Commerce App\skinet\Core\obj\Debug\net8.0\refint\Core.dll
 C:\Users\PC\Documents\IT\E-Commerce App\skinet\Core\obj\Debug\net8.0\Core.pdb
 C:\Users\PC\Documents\IT\E-Commerce App\skinet\Core\obj\Debug\net8.0\ref\Core.dll
+C:\Users\PC\Documents\IT\E-Commerce App\skinet\Core\obj\Debug\net8.0\Core.sourcelink.json
